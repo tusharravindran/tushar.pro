@@ -4,7 +4,7 @@ import { useEffect, useState } from "react"
 
 import { cn } from "@/app/lib/utils"
 
-const BIRTHDAY = new Date("2002-06-21T05:30:00")
+const BIRTHDAY = new Date("2002-01-18T00:00:00")
 const YEAR_MS = 1000 * 60 * 60 * 24 * 365.25
 const DAY_MS = 1000 * 60 * 60 * 24
 const HOUR_MS = 1000 * 60 * 60

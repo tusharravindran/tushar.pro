@@ -2,7 +2,6 @@ import type { MetadataRoute } from "next"
 import { cacheLife } from "next/cache"
 
 import { siteConfig } from "@/app/config"
-import { blogPosts } from "@/app/writings/writings-data"
 
 const baseUrl = siteConfig.url.endsWith("/")
   ? siteConfig.url
@@ -13,11 +12,6 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   cacheLife("max")
 
   const now = new Date()
-
-  const blogs = blogPosts.map((post) => ({
-    url: `${baseUrl}${post.slug.replace(/^\//, "")}`,
-    lastModified: new Date(post.date),
-  }))
 
   const routes = [
     "",
@@ -30,5 +24,5 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     lastModified: now,
   }))
 
-  return [...routes, ...blogs]
+  return routes
 }

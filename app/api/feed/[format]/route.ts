@@ -29,7 +29,7 @@ function generateFeed() {
     id: baseUrl,
     link: baseUrl,
     language: "en",
-    image: `${baseUrl}/opengraph-image.png`,
+    image: `${baseUrl}${siteConfig.image}`,
     favicon: `${baseUrl}/favicon.ico`,
     copyright: `All rights reserved ${new Date().getFullYear()}, ${siteConfig.name}`,
     feedLinks: {
@@ -45,7 +45,7 @@ function generateFeed() {
   })
 
   for (const post of blogPosts) {
-    const url = `${baseUrl}${post.slug}`
+    const url = post.url.startsWith("/") ? `${baseUrl}${post.url}` : post.url
     feed.addItem({
       title: post.title,
       id: url,

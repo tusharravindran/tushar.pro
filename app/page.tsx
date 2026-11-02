@@ -23,20 +23,7 @@ export const metadata: Metadata = {
   alternates: { canonical: siteConfig.url },
 }
 
-const homeWritingsOrder = [
-  "/writings/simd",
-  "/writings/skipper",
-  "/writings/deletion-focused",
-  "/writings/dx",
-  "/writings/db",
-  "/writings/munnar",
-] as const
-
-const orderedHomeWritings = homeWritingsOrder.map((slug) => {
-  const post = blogPosts.find((p) => p.slug === slug)
-  if (!post) throw new Error(`Missing blog post for slug: ${slug}`)
-  return post
-})
+const HOME_WRITINGS_LIMIT = 6
 
 export default async function HomePage() {
   "use cache"
@@ -53,7 +40,7 @@ export default async function HomePage() {
                 {siteConfig.name}
               </span>
               <span className="absolute left-0 top-0 inline-block translate-y-full transition-transform duration-300 ease-in-out group-hover:translate-y-0">
-                raghu
+                tushar
               </span>
             </span>
           </Link>
@@ -62,107 +49,104 @@ export default async function HomePage() {
 
       <div className="min-w-0 w-full">
         <p className="text-base leading-relaxed text-[var(--color-text)]">
-          I&apos;m a software engineer based in India.
+          I&apos;m a full stack engineer based in Chennai, India.
         </p>
         <p className="mt-4 text-base leading-relaxed text-[var(--color-text)]">
-          I like building things, used to assemble PCs for my
-          friends. Then a social media app we built in{" "}
+          For the past 3+ years I&apos;ve worked across the stack, designing
+          systems, building APIs and shipping products that scale. I studied IT
+          at{" "}
           <LinkPreviewServer
             href="https://sece.ac.in/"
             className="home-inline-link"
           >
-            college
-          </LinkPreviewServer>{" "}
-          got serious traffic, and I kept building after that. Now I&apos;m at{" "}
+            Sri Eshwar College of Engineering
+          </LinkPreviewServer>
+          , and I&apos;m now at{" "}
           <LinkPreviewServer
-            href="https://byzanlink.com/"
+            href="https://sedintechnologies.com/"
             className="home-inline-link"
           >
-            Byzanlink
+            Sedin Technologies
           </LinkPreviewServer>
-          , after working with the teams at{" "}
-          <LinkPreviewServer href="https://lumel.com/" className="home-inline-link">
-            Lumel
+          , working on products for teams like{" "}
+          <LinkPreviewServer
+            href="https://www.kula.ai/"
+            className="home-inline-link"
+          >
+            Kula
+          </LinkPreviewServer>
+          ,{" "}
+          <LinkPreviewServer
+            href="https://www.delhivery.com/"
+            className="home-inline-link"
+          >
+            Delhivery
           </LinkPreviewServer>{" "}
           and{" "}
           <LinkPreviewServer
-            href="https://www.freightify.com"
+            href="https://railsfactory.com/"
             className="home-inline-link"
           >
-            Freightify
+            RailsFactory
           </LinkPreviewServer>
           .
         </p>
         <p className="mt-4 text-base leading-relaxed text-[var(--color-text)]">
-          Away from the screen, I&apos;m usually backpacking or out on my bike
-          somewhere.
+          Rails, React, Go, Node, whatever the problem needs. Most of my work
+          lives where backend reliability meets product thinking.
         </p>
         <p className="mt-8 text-base font-medium leading-normal text-[var(--color-text)]">
           Some of my tech contributions:
         </p>
         <ul className="mt-2 list-disc space-y-1 pl-5 text-base leading-normal text-[var(--color-text)]">
           <li>
-            AI research on fake image detection (
+            Integrations for the{" "}
             <LinkPreviewServer
-              href="https://ieeexplore.ieee.org/document/10046797"
+              href="https://www.kula.ai/"
               className="home-inline-link"
             >
-              IEEE published
-            </LinkPreviewServer>
-            )
-          </li>
-          <li>
-            Bug bounties from{" "}
-            <LinkPreviewServer
-              href="https://www.microsoft.com/en-us/msrc/bounty-microsoft-azure"
-              className="home-inline-link"
-            >
-              Microsoft Azure
-            </LinkPreviewServer>
-            ,{" "}
-            <LinkPreviewServer
-              href="https://hackerone.com/mcafee_secure"
-              className="home-inline-link"
-            >
-              McAfee
-            </LinkPreviewServer>
-            ,{" "}
-            <LinkPreviewServer
-              href="https://hackerone.com/uber"
-              className="home-inline-link"
-            >
-              Uber
-            </LinkPreviewServer>
-          </li>
-          <li>
-            <LinkPreviewServer
-              href="https://github.com/zalando/skipper"
-              className="home-inline-link"
-            >
-              Custom reverse proxy
+              Kula
             </LinkPreviewServer>{" "}
-            in Go, 1M+ daily API requests
+            ATS (DocuSign, HackerRank, Certn and more), cutting manual
+            recruiter ops by ~60–70%
           </li>
           <li>
-            Ticketing queue in Go for Paytm{" "}
+            Open source work on{" "}
             <LinkPreviewServer
-              href="https://insider.in/"
+              href="https://www.sunbird.org/"
               className="home-inline-link"
             >
-              Insider
+              Sunbird ED
             </LinkPreviewServer>
-            , 40,000+ concurrent requests at sub-200ms p99
+            , the platform behind DIKSHA (180M+ learners)
           </li>
-          <li>IAM service in Go serving 100K+ users daily</li>
           <li>
-            Network infrastructure for{" "}
             <LinkPreviewServer
-              href="https://www.kghospital.com/"
+              href="https://railsup.io/"
               className="home-inline-link"
             >
-              KG Hospital
+              RailsUp
             </LinkPreviewServer>
-            , Coimbatore
+            , a Rails upgrade estimator with 50+ daily active users
+          </li>
+          <li>
+            <LinkPreviewServer
+              href="https://github.com/tusharravindran/flagbase"
+              className="home-inline-link"
+            >
+              Flagbase
+            </LinkPreviewServer>
+            , a self-hosted feature flag platform in Go with local SDK
+            evaluation
+          </li>
+          <li>
+            <LinkPreviewServer
+              href="https://github.com/tusharravindran/devdoctor"
+              className="home-inline-link"
+            >
+              devdoctor
+            </LinkPreviewServer>
+            , a real-time log diagnostics CLI (pip + Homebrew)
           </li>
         </ul>
       </div>
@@ -172,21 +156,33 @@ export default async function HomePage() {
           Some of my writings:
         </h2>
         <ol className="mt-2 list-decimal space-y-1 pl-5 marker:text-[var(--color-text)]">
-          {orderedHomeWritings.map((post) => (
-            <li key={post.slug} className="pl-1 text-base leading-normal">
-              <Link href={post.slug} className="home-writings-link">
+          {blogPosts.slice(0, HOME_WRITINGS_LIMIT).map((post) => (
+            <li key={post.url} className="pl-1 text-base leading-normal">
+              <a
+                href={post.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="home-writings-link"
+              >
                 {post.title}
-              </Link>
+              </a>
             </li>
           ))}
         </ol>
         <p className="home-footer mt-6 text-base leading-normal">
-          You can read my above writings or{" "}
+          You can read{" "}
           <LinkPreviewServer
-            href={siteConfig.social.twitter}
+            href={siteConfig.social.medium}
             className="home-inline-link"
           >
-            follow me online
+            all my writings
+          </LinkPreviewServer>{" "}
+          or{" "}
+          <LinkPreviewServer
+            href={siteConfig.social.linkedin}
+            className="home-inline-link"
+          >
+            connect with me
           </LinkPreviewServer>
           . Here is my{" "}
           <LinkPreviewServer
