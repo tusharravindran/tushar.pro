@@ -61,7 +61,13 @@ export const metadata: Metadata = {
     title: siteConfig.name,
     card: "summary_large_image",
   },
-  icons: { icon: "/favicon.ico" },
+  icons: {
+    icon: [
+      { url: "/favicon.ico", sizes: "any" },
+      { url: "/icon.png", type: "image/png", sizes: "192x192" },
+    ],
+    apple: "/apple-icon.png",
+  },
 }
 
 export default function RootLayout({

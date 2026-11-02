@@ -6,6 +6,7 @@ import { siteConfig } from "./app/config"
 const nextConfig: NextConfig = {
   pageExtensions: ["mdx", "ts", "tsx"],
   cacheComponents: true,
+  partialPrefetching: true,
   experimental: {
     mdxRs: true,
     optimizePackageImports: ["lucide-react"],

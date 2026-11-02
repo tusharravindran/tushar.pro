@@ -32,6 +32,10 @@ const ICON_RE_A =
 const ICON_RE_B =
   /<link[^>]*href=["']([^"']*)["'][^>]*rel=["'](?:shortcut )?icon["']/i
 
+// Sites that reject preview bots (LinkedIn answers 999, which fetch can't
+// represent and throws a RangeError on).
+const BLOCKED_HOSTS = /(^|\.)linkedin\.com$/i
+
 function isTweetUrl(url: string): boolean {
   return /^https?:\/\/(twitter\.com|x\.com)\/\w+\/status\/\d+/.test(url)
 }
@@ -50,6 +54,8 @@ export async function fetchOGMetadata(
 
   try {
     const fetchUrl = isTweetUrl(url) ? tweetProxy(url) : url
+
+    if (BLOCKED_HOSTS.test(new URL(fetchUrl).hostname)) return null
 
     const response = await fetch(fetchUrl, {
       headers: { "User-Agent": "Mozilla/5.0 (compatible; LinkPreview/1.0)" },
@@ -110,7 +116,7 @@ export async function fetchOGMetadata(
       url,
     }
   } catch (error) {
-    console.error("Failed to fetch OG metadata:", error)
+    console.warn(`Failed to fetch OG metadata for ${url}:`, error)
     return null
   }
 }
