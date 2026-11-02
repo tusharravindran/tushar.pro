@@ -9,12 +9,12 @@ export const siteConfig = {
   jobTitle: "Full Stack Engineer",
   image: `/api/og?title=${encodeURIComponent("Tushar Ravindran")}`,
   email: "tusharrravindran@gmail.com",
-  // TODO: replace with a direct link to your resume PDF
-  resume: "https://tusharravindran.github.io/",
+  resume: "/resume.pdf",
   social: {
     github: "https://github.com/tusharravindran",
     linkedin: "https://www.linkedin.com/in/tusharravindran",
     medium: "https://iamtusharxo.medium.com",
+    instagram: "https://www.instagram.com/iamtusharxo",
     email: "tusharrravindran@gmail.com",
   },
   keywords: [
