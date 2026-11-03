@@ -69,10 +69,7 @@ export function getStructuredData() {
           addressLocality: "Chennai",
           addressCountry: "IN",
         },
-        sameAs: [
-          ...Object.values(siteConfig.social),
-          "https://tusharravindran.github.io/",
-        ],
+        sameAs: Object.values(siteConfig.social),
         knowsAbout: [
           "Ruby on Rails",
           "Go",
