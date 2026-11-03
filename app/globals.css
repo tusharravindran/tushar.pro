@@ -45,7 +45,7 @@
   --color-text-soft: color-mix(in oklch, var(--color-text) 55%, transparent);
   --color-link: #1d4ed8;
   --color-link-hover: #1e40af;
-  --color-home-link: #0070f3;
+  --color-home-link: #0062d1;
   --color-toc-active: #0070f3;
   --color-accent: #2563eb;
   --color-accent-soft: #dbeafe;
