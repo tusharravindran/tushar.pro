@@ -13,16 +13,12 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
 
   const now = new Date()
 
-  const routes = [
-    "",
-    "rss.xml",
-    "atom.xml",
-    "feed.json",
-    "sitemap.xml",
-  ].map((route) => ({
-    url: route ? `${baseUrl}${route}` : baseUrl,
-    lastModified: now,
-  }))
-
-  return routes
+  return [
+    {
+      url: baseUrl,
+      lastModified: now,
+      changeFrequency: "monthly",
+      priority: 1,
+    },
+  ]
 }

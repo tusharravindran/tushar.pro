@@ -7,7 +7,7 @@ import { siteConfig } from "@/app/config"
 import { blogPosts } from "@/app/writings/writings-data"
 
 export const metadata: Metadata = {
-  title: { absolute: siteConfig.name },
+  title: { absolute: `${siteConfig.name} · ${siteConfig.jobTitle}` },
   description: siteConfig.description,
   openGraph: {
     title: siteConfig.name,
@@ -24,6 +24,13 @@ export const metadata: Metadata = {
 }
 
 const HOME_WRITINGS_LIMIT = 6
+
+const profileLinks = [
+  { label: "GitHub", href: siteConfig.social.github },
+  { label: "LinkedIn", href: siteConfig.social.linkedin },
+  { label: "Medium", href: siteConfig.social.medium },
+  { label: "Instagram", href: siteConfig.social.instagram },
+]
 
 export default async function HomePage() {
   "use cache"
@@ -192,6 +199,26 @@ export default async function HomePage() {
             resume
           </LinkPreviewServer>
           .
+        </p>
+        <p className="home-footer mt-4 text-base leading-normal">
+          Find me on{" "}
+          {profileLinks.map(({ label, href }, i) => (
+            <span key={href}>
+              <a
+                href={href}
+                target="_blank"
+                rel="me noopener noreferrer"
+                className="home-inline-link"
+              >
+                {label}
+              </a>
+              {i < profileLinks.length - 2
+                ? ", "
+                : i === profileLinks.length - 2
+                  ? " and "
+                  : "."}
+            </span>
+          ))}
         </p>
       </section>
     </main>
