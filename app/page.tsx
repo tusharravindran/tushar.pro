@@ -220,6 +220,11 @@ export default async function HomePage() {
             </span>
           ))}
         </p>
+        <p className="home-footer mt-4 text-base leading-normal">
+          <a href="/privacy.html" className="home-inline-link">
+            Privacy policy
+          </a>
+        </p>
       </section>
     </main>
   )
